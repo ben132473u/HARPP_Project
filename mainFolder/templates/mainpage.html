@@ -1,0 +1,36 @@
+<h1 id="123">hello world</h1>
+
+<div class="col-button">
+    <a class="btn btn-primary topBtn" id="clickMe" role="button" href="#">Click me</a>
+</div>
+
+<input id="input" placeholder="write me" value=""></input>
+
+<script>
+var hello = document.getElementById("123");
+var click = document.getElementById("clickMe");
+var input = document.getElementById("input");
+
+
+
+click.onclick=function(){
+    //location.replace(location.origin+"/test1");
+    console.log(input.value);
+    /*ajax(){
+        data: input.value,
+        type: "POST/GET",
+        url: "/test1"
+    }
+    .done(function){
+        if(data.success){
+            //do smth
+            input.value = "yay";
+        }
+        else if(data.failed){
+            //do smth
+        }
+    }*/
+}
+
+
+</script>

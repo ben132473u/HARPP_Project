@@ -23,10 +23,26 @@ from flask import render_template, flash, redirect, url_for
 #import http.cookiejar as cookielib
 
 @app.route("/")
+@app.route("/login", methods=['GET', 'POST'])
+def login():
+    return render_template('login.html', title='Login')
+    
 @app.route("/mainPage", methods=['GET', 'POST'])
 def mainPage():
     # for all the template pages, render like this.
     return render_template('mainpage.html', title='Home')
+
+@app.route("/viewListing", methods=['GET', 'POST'])
+def viewListing():
+    return render_template('viewlisting.html', title='View Listing')
+
+@app.route("/predictionTool", methods=['GET', 'POST'])
+def predictionTool():
+    return render_template('predictiontool.html', title='Prediction Tool')
+
+@app.route("/viewAnalytics", methods=['GET', 'POST'])
+def viewAnalytics():
+    return render_template('viewanalytics.html', title='View Analytics')
 
 @app.route("/test1", methods=['GET', 'POST'])
 def test1():

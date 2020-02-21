@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Welcome</title>
+        <meta charset="utf-8" />
+        <meta name="google-signin-client_id" content="431281240442-7uo8rqq83bf92qf9joibt6i3hvpirum4.apps.googleusercontent.com">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="static/css/main.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+            function onSignIn(googleUser) {
+            window.location.href = "./mainPage"
+            
+
+              // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+            }
+          </script>
+        <style>
+            
+            @keyframes slideIn {
+                from {
+                    background-position: center top;
+                }
+                to {
+                    background-position: center center;
+                }
+                
+            }
+
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+            .bg {
+                background-image: url(../static/images/login_bg.jpg);
+                height: 100%;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                animation: 2s ease-out 0s 1 slideIn;
+            }
+            .login_button {
+                position: absolute;
+                top: 50%;  /* position the top  edge of the element at the middle of the parent */
+                left: 50%; /* position the left edge of the element at the middle of the parent */
+                transform: translate(-50%, -50%); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+            }
+            .login_text {
+                position: absolute;
+                font-family: 'Poppins', sans-serif;
+                font-size: 40px;
+                font-weight: bold;
+                top: 20%;  /* position the top  edge of the element at the middle of the parent */
+                left: 50%; /* position the left edge of the element at the middle of the parent */
+                transform: translate(-50%, -50%); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="bg">
+            <h2 class='login_text'>HARPP</h2>
+            <div class="g-signin2 login_button" data-onsuccess="onSignIn"></div>
+        </div>
+    </body>
+</html>

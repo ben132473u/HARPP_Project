@@ -23,14 +23,16 @@ from mainFolder import dao
 #import mechanize
 #import http.cookiejar as cookielib
 
-@app.route("/")
+#@app.route("/")
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     return render_template('login.html', title='Login')
-    
+@app.route("/")
 @app.route("/mainPage", methods=['GET', 'POST'])
 def mainPage():
     # for all the template pages, render this.
+    #requestedID = dao.daoTest()
+    dao.loadData()
     return render_template('mainpage.html', title='Home')
 
 @app.route("/viewListing", methods=['GET', 'POST'])
@@ -43,7 +45,7 @@ def viewListing():
         file.close()
         return redirect('predictionTool')
     if request.method == 'GET':
-        requestedID = dao.daoTest()
+        #requestedID = dao.daoTest()
         file = open('test.txt', 'w+')
         file.write(str(requestedID))
         file.close()

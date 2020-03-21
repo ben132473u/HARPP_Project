@@ -1,14 +1,28 @@
-<h1>View Listing Page</h1>
+{% extends "mainpage.html" %}
+{% block content_head %}
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
-<form method="POST">
-    <h3>dao POST test</h3>
-        <input class="form-control" type="text" name="requestID" id="requestID">
-        <button id="save" class="btn form-control" type="submit"><i class="fa fa-fw fa-check"></i><b>post</b></button>
-</form>
+{% endblock content_head%}
+{% block content_body %}
 
-<br>
-<form method="GET">
-    <h3>dao GET test</h3>
-        <input class="form-control" type="text" name="requestID22" id="requestID22">
-        <button id="save" class="btn form-control" type="submit"><i class="fa fa-fw fa-check"></i><b>get</b></button>
-</form>
+<div id="target" style="display: none">
+        <h3>Listings</h3>
+
+        {{ tables|safe }}
+</div>
+
+<script>
+        $(window).on("load", function () {
+                var hdb_table = document.getElementById("hdb_tableid");
+               
+                $(hdb_table).DataTable({
+                        "columnDefs": [
+                                { "width": "20%", "targets": 0 }
+                        ]
+                });
+
+                var div_table = document.getElementById("target");
+                div_table.style = "display"
+        });
+</script>
+{% endblock content_body%}

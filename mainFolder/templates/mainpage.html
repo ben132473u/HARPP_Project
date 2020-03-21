@@ -1,137 +1,128 @@
 <!DOCTYPE HTML>
 <html>
+	<head>
+		<title>HARPP - {{title}}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="google-signin-client_id" content="431281240442-384j0atlt8u8qn1ch69cu0gc80cot4n6.apps.googleusercontent.com">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+		<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+		<style>
+			#overlay {
+			  position: fixed;
+			  display: block;
+			  width: 100%;
+			  height: 100%;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  background-color: rgba(0,0,0,0.5);
+			  z-index: 10001;
+			}
+			
+			#text{
+			  position: absolute;
+			  top: 50%;
+			  left: 50%;
+			  font-size: 50px;
+			  color: white;
+			  transform: translate(-50%,-50%);
+			  -ms-transform: translate(-50%,-50%);
+			}
+			</style>
+	</head>
 
-<head>
-	<title>HARPP - {{title}}</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<meta name="google-signin-client_id"
-		content="431281240442-7uo8rqq83bf92qf9joibt6i3hvpirum4.apps.googleusercontent.com">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
-	<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+	<!---in event that i need to include something from another page-->
+	{% block content_head %}
+	{% endblock content_head%}
+    <body class="is-preload">
+		<!--Mask Overlay-->
+		<div id="overlay">
+			<div id="text">
 
-</head>
+			</div>
+		  </div>
 
-<!---in event that i need to include something from another page-->
-{% block content_head %}
-{% endblock content_head%}
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<!-- Header -->
+								<header id="header">
+									<a href="#" class="logo"><strong>HARPP</strong></a>
+								</header>
 
-<!----
-    <body>
-        <h1 id="123">hello world</h1>
+							<!-- Content -->
+							<section>
+								{% block content_body %}
+								<hr class="major" />
 
-        <div class="col-button">
-            <a class="btn btn-primary topBtn" id="clickMe" role="button" href="#">Click me</a>
-        </div>
+								<h2>Interdum sed dapibus</h2>
+								<p>
+								This document proposes the design and publishing of a web application which serves as a one-stop site for anyone interested in purchasing a flat as an investment, or selling their current flat. The project aims to accomplish the following goals:
+								Display the findings of analysis on the elements that contribute to a higher (or lower) resale price of a HDB flat.
+								Provide the service to predict the pricing of a flat, given relevant information of the flat, and the existing infrastructure in the estate.
+										For the first goal, the resale prices of flats, as well as basic flat information will be retrieved from data.gov. After which, more information like the location of malls, schools, healthcare and hawker centers will be added to our dataset. Following the acquisition of these datasets, we then separate flats by the type (i.e. 3-Room, 4-Room). These types will be analyzed individually, comparing the resale prices of respective flat types to every other element in our dataset in an attempt to find correlation. Any confusion between causality of elements will be discussed with our client sponsor and representatives of the Housing Development Board and rectification of any false positive will be done.
+										For the second goal, a prediction model will be trained to predict the likely valuation of any HDB flat given basic information about the property - location, levels, housing type, housing generation and age. Subsequently, the dataset will be split into mature and developing estates. It is very likely that a currently developing estate will have a similar growth as mature estates that were once developing as well. As such, while mature estates will be analyzed for facilities and amenities nearby, it should be expected of developing estates to have slightly fewer amenities. Further analysis will have to be performed to determine the trends, as well as factors affecting these estates in order to create a prediction model for the resale value of flats in developing and mature estates.
+									The main constraints for our project would be the accuracy of data, as well as the noise within the dataset. Dataset with more noise will require more time to be cleaned and analyzed. Also, we will be focusing on more tangible things to analyze like the facilities and amenities (i.e. Religious buildings, schools, hawker centers, shopping malls), and will not be analyzing any other things. Excluded criteria will include scenery, the sun direction or condition of each house prior to selling.
+								</p>
 
-        <input id="input" placeholder="write me" value=""></input>
-    </body>
-    -->
+								<hr class="major" />
 
-<body class="is-preload">
-	<!-- Wrapper -->
-	<div id="wrapper">
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
-				<!-- Header -->
-				<header id="header">
-					<a href="#" class="logo"><strong>HARPP</strong></a>
-					<ul class="icons">
-						<a href="#" onClick="Logout();">Sign out</a>
-						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-					</ul>
-				</header>
+								<h2>Magna etiam veroeros</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+								<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 
-				<!-- Content -->
-				<section>
-					{% block content_body %}
-					<header class="main">
-						<h1>HARPP</h1>
-					</header>
+								<hr class="major" />
 
-					<span class="image main"><img id="profilePicture" src="./static/images/pic11.jpg" alt="" /></span>
+								<h2>Lorem aliquam bibendum</h2>
+								<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
 
-					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
-						venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-						auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque
-						in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar
-						mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque
-						enim turpis, hendrerit.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class
-						aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-						tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc
-						ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-						bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus.
-						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In
-						non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.
-					</p>
-					<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor
-						imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-						Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at,
-						elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+								{% endblock content_body%}								
+							</section>
 
-					<hr class="major" />
+						</div>
+					</div>
 
-					<h2>Interdum sed dapibus</h2>
-					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
-						venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-						auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque
-						in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar
-						mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque
-						enim turpis, hendrerit.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class
-						aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-						tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc
-						ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-						bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus.
-						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In
-						non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.
-						Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor
-						imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-						Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at,
-						elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
 
-					<hr class="major" />
+							<!--Avatar-->
+							<section id="section_avatar" class="alt">
+								<span class="image fit"><img style="border-radius: 50%;" id="avatar" src="{{ url_for('static', filename='images/img_avatar.png') }}" alt="Avatar">
+									<br>
+									<center><b id="username">Welcome, &nbsp </b> <br> 
+										<a href="#" onClick="Logout();">Sign out</a>
+									</center>
+								</span>
+							</section>
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="{{ url_for('mainPage') }}">Home</a></li>
+										<li><a href="{{ url_for('viewListing') }}">View Listing</a></li>
+										<li><a href="{{ url_for('predictionTool') }}">Prediction Tool</a></li>
+										<li><a href="{{ url_for('viewAnalytics') }}">View Analytics</a></li>
+									</ul>
+								</nav>
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a></p>
+								</footer>
 
-					<h2>Magna etiam veroeros</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class
-						aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-						tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc
-						ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-						bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus.
-						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In
-						non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.
-					</p>
-					<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor
-						imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet.
-						Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at,
-						elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
-
-					<hr class="major" />
-
-					<h2>Lorem aliquam bibendum</h2>
-					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
-						venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim
-						auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque
-						in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar
-						mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque
-						enim turpis, hendrerit.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class
-						aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam
-						tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc
-						ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non,
-						bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus.
-						Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In
-						non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.
-					</p>
-					{% endblock content_body%}
-				</section>
+						</div>
+					</div>
 
 			</div>
 		</div>
@@ -173,48 +164,30 @@
 					</ul>
 				</nav>
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>Get in touch</h2>
-					</header>
-					<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem
-						ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-						tempus aliquam.</p>
-					<ul class="contact">
-						<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-						<li class="icon solid fa-phone">(000) 000-0000</li>
-						<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-							Nashville, TN 00000-0000</li>
-					</ul>
-				</section>
+		<!-- Scripts -->
+			
+			<script src="static/js/datatables.min.js"></script>
+			<script src="static/js/browser.min.js"></script>
+			<script src="static/js/breakpoints.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+	</body>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
-							href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5
-							UP</a>.</p>
-				</footer>
-
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Scripts -->
-	<script src="static/js/datatables.min.js"></script>
-	<script src="static/js/browser.min.js"></script>
-	<script src="static/js/breakpoints.min.js"></script>
-	<script src="static/js/util.js"></script>
-	<script src="static/js/main.js"></script>
-
-</body>
+	{% block content_footer %}
+	{% endblock content_footer%}
 <script>
-	//ready gapi.auth for retrival of user detail
-	function init() {
-		gapi.load('auth2', function () {
-			gapi.auth2.init({
-				client_id: '431281240442-7uo8rqq83bf92qf9joibt6i3hvpirum4.apps.googleusercontent.com',
+function hideLoader() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+setTimeout(hideLoader, 1000);
+
+		//ready gapi.auth for retrival of user detail
+		function init(){
+			gapi.load('auth2', function() {
+				console.log("gapi loaded");
+				gapi.auth2.init({
+				client_id: '431281240442-384j0atlt8u8qn1ch69cu0gc80cot4n6.apps.googleusercontent.com',
 			})
 				.then(function () {
 					auth2 = gapi.auth2.getAuthInstance();
@@ -227,8 +200,8 @@
 					if (profile.getImageUrl() != null) {
 						document.getElementById('avatar').src = profile.getImageUrl();
 					}
-
-					console.log(auth2.isSignedIn.get()); //now this always returns correctly        
+					
+					console.log(auth2.isSignedIn.get());    
 				});
 		});
 
@@ -242,31 +215,8 @@
 		});
 	}
 
-</script>
-<script>/*
-var hello = document.getElementById("123");
-var click = document.getElementById("clickMe");
-var input = document.getElementById("input");
-
-click.onclick=function(){
-//location.replace(location.origin+"/test1");
-console.log(input.value); */
-    /*ajax(){
-        data: input.value,
-        type: "POST/GET",
-        url: "/test1"
-    }
-    .done(function){
-        if(data.success){
-            //do smth
-            input.value = "yay";
-        }
-        else if(data.failed){
-            //do smth
-        }
-    }*/
-//}
-
+	  </script>	
+<script>
 
 </script>
 
